@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CareerGuidance</string>
+    <string name="home">首页</string>
+    <string name="lead">职引</string>
+    <string name="recommend">推荐</string>
+    <string name="mine">我的</string>
 </resources>

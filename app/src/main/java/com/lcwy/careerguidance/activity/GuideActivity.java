@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 引导页-第一次进入APP时为用户做一个引导
  * Created by LMX on 2018/2/3.
  */
 
@@ -32,18 +33,16 @@ public class GuideActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
         initViews();
-        Log.d("test", "onCreate: 完全初始化后");
+        Log.d("test", "onCreate: 引导页完成");
     }
 
     private void initViews(){
         //加载3个view
         LayoutInflater inflater = LayoutInflater.from(this);
-
         views = new ArrayList<View>();
         views.add(inflater.inflate(R.layout.guide_one,null));
         views.add(inflater.inflate(R.layout.guide_two,null));
         views.add(inflater.inflate(R.layout.guide_three,null));
-        Log.d("test", "onCreate: views.add");
         vpAdapter = new ViewPagerAdapter(views,this);
         vp = (ViewPager) findViewById(R.id.viewpager);
         vp.setAdapter(vpAdapter);
@@ -58,8 +57,5 @@ public class GuideActivity extends Activity {
                 finish();
             }
         });
-        Log.d("GuideActivity", "onCreate: btn_start");
-
-        //
     }
 }

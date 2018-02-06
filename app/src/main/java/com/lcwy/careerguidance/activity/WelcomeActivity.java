@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.lcwy.careerguidance.MainActivity;
 import com.lcwy.careerguidance.R;
 
 /**
+ * 欢迎页-程序每次启动时短暂显示
  * Created by LMX on 2018/2/4.
  */
 
@@ -20,7 +22,7 @@ public class WelcomeActivity extends Activity {
     private static final int GO_HOME = 1000;
     private static final int GO_GUIDE = 1001;
 
-
+    //根据接收到的消息判断是进入引导页还是主页
     private Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg){
           switch (msg.what){
@@ -38,8 +40,9 @@ public class WelcomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         init();
+        Log.d("WelcomeActivity","欢迎页加载完毕");
     }
-
+    //初始化
     private void init(){
         SharedPreferences preferences = getSharedPreferences("lcwy",MODE_PRIVATE);
         isFirstIn = preferences.getBoolean("isFirstIn",true);//获取isFirstIn键对应的值，如果没有默认为ture，意为第一次进入
@@ -58,7 +61,6 @@ public class WelcomeActivity extends Activity {
         startActivity(intent);
         finish();
     }
-
     //从当前界面跳转到引导界面
     private void goGuide(){
         Intent intent = new Intent(WelcomeActivity.this, GuideActivity.class);
